@@ -106,5 +106,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias e="exit"
-alias zshc="nano ~/dotfiles/zsh/.zshrc"
-alias zshs="source ~/dotfiles/zsh/.zshrc"
+alias zc="nano ~/dotfiles/zsh/.zshrc"
+alias zs="source ~/dotfiles/zsh/.zshrc"
+alias dev="cd ~/dev"
+
+
+# git alias
+alias ga="git add"
+alias ga.="git add ."
+alias gc="git commit -m"
+alias gp="git push origin development"
+alias gpp="git push origin"
+alias gs="git status -s"
+alias gst="git status"
+
