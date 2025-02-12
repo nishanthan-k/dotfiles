@@ -4,6 +4,10 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export PATH=$PATH:/opt/docker-desktop/bin
+export DOCKER_HOST=unix:///var/run/docker.sock
+export PATH=$PATH:/home/nishanthan/.npm-global/bin
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -73,6 +77,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use)
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan,bold'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,6 +106,14 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
+
+
+# load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -108,7 +121,7 @@ source $ZSH/oh-my-zsh.sh
 alias e="exit"
 alias zc="nano ~/dotfiles/zsh/.zshrc"
 alias zs="source ~/dotfiles/zsh/.zshrc"
-alias dev="cd ~/dev"
+alias nautilus='GTK_THEME=Yaru-olive-dark nautilus'
 
 
 # git alias
@@ -120,3 +133,23 @@ alias gpp="git push origin"
 alias gs="git status -s"
 alias gst="git status"
 
+
+# workspace alias
+alias dev="cd ~/dev"
+
+
+# dev alias
+alias nrd="npm run dev"
+alias c="code ."
+alias o="open ."
+alias nl="nano -l"
+alias nc="nano -c"
+alias na="nano -a"
+
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+eval "$(zoxide init zsh)"
+
+bindkey -s ^f "tmux-sessionizer\n"
