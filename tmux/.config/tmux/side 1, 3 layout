@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SESSION_NAME="my_session"
+BASE_PATH="/mnt/d/Ebitaus/source"
+PATH_1="$BASE_PATH/taxus-api"
+PATH_2="$BASE_PATH/discovery-hub"
+PATH_3="$BASE_PATH/gateway-service"
+PATH_4="$BASE_PATH/auth-core"
+
+tmux new-session -d -s $SESSION_NAME "cd $PATH_1; exec zsh"
+
+# Split window into two sides (left and right)
+tmux split-window -h "cd $PATH_2; exec zsh"
+
+# Move to right pane and split it into three horizontally
+tmux select-pane -t 1
+tmux split-window -v "cd $PATH_3; exec zsh"
+tmux split-window -v "cd $PATH_4; exec zsh"
+
+# Select the first pane to start
+tmux select-pane -t 0
+
+# Attach to session
+tmux attach-session -t $SESSION_NAME
