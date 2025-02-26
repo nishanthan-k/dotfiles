@@ -1,0 +1,52 @@
+#!/bin/bash
+
+SESSION_NAME="build-session"
+BASE_PATH="/mnt/d/Ebitaus/source"
+PATH_1="$BASE_PATH/taxus-api"
+PATH_2="$BASE_PATH/discovery-hub"
+PATH_3="$BASE_PATH/gateway-service"
+PATH_4="$BASE_PATH/auth-core"
+
+# Debug ports
+PATH1_DEBUG_PORT=5003
+PATH2_DEBUG_PORT=5000
+PATH3_DEBUG_PORT=5001
+PATH4_DEBUG_PORT=5002
+
+# Respawn delay (in seconds)
+RESP_SEC=5
+
+# Start tmux session
+tmux new-session -d -s $SESSION_NAME "cd $PATH_1; exec zsh"
+
+# Split window into two sides (left and right)
+tmux split-window -h "cd $PATH_2; exec zsh"
+
+# Move to right pane and split it into two vertically
+tmux select-pane -t 1
+tmux split-window -v "cd $PATH_3; exec zsh"
+tmux split-window -v "cd $PATH_4; exec zsh"
+
+# Select the first pane to start
+tmux select-pane -t 1
+
+# Start path2 (discovery-hub) in the second pane
+tmux send-keys -t 1 "ls src/main/java/**/*.java | entr -r mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:$PATH2_DEBUG_PORT\"" C-m
+
+# Wait for path2 to initialize
+sleep $RESP_SEC
+
+# Start path3 (gateway-service) in the third pane
+tmux send-keys -t 2 "ls src/main/java/**/*.java | entr -r mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:$PATH3_DEBUG_PORT\"" C-m
+
+# Wait for path3 to initialize
+sleep $RESP_SEC
+
+# Start path4 (auth-core) in the fourth pane
+tmux send-keys -t 3 "ls src/main/java/**/*.java | entr -r mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:$PATH4_DEBUG_PORT\"" C-m
+
+# Start path1 (taxus-api) in the first pane
+tmux send-keys -t 0 "ls src/main/java/**/*.java | entr -r mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:$PATH1_DEBUG_PORT\"" C-m
+
+# Attach to session immediately
+tmux attach-session -t $SESSION_NAME
