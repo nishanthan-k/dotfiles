@@ -7,7 +7,7 @@ set $mod Mod4
 #floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -168,7 +168,7 @@ bindsym $mod+r mode "resize"
 #bindsym XF86MonBrightnessUp exec --no-startup-id 
 
 # font
-font pango: JetBrains Mono Medium 12
+font pango:MesloLGS Nerd Font 16
 
 bindsym $mod+mod1+T exec --no-startup-id notify-send "$(date)"
 bindsym $mod+mod1+B exec --no-startup-id notify-send "Battery Status" "$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E 'percentage|time to empty|time to full' | xargs)"

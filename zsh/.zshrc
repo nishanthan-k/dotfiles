@@ -119,7 +119,7 @@ export NVM_DIR="$HOME/.nvm"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias e="exit"
-alias zc="nano ~/dotfiles/zsh/.zshrc"
+alias zc="nvim ~/dotfiles/zsh/.zshrc"
 alias zs="source ~/dotfiles/zsh/.zshrc"
 alias nautilus='GTK_THEME=Yaru-olive-dark nautilus'
 
@@ -149,7 +149,7 @@ alias na="nano -a"
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
-eval "$(zoxide init zsh)"
+# source <(ng completion script)
+# eval "$(zoxide init zsh)"
 
-bindkey -s ^f "tmux-sessionizer\n"
+# bindkey -s ^f "tmux-sessionizer\n"
