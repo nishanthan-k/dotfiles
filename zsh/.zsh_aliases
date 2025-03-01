@@ -1,0 +1,28 @@
+# system
+alias e="exit"
+alias zc="nvim ~/dotfiles/zsh/.zshrc"
+alias zs="source ~/dotfiles/zsh/.zshrc"
+alias zac="nvim ~/dotfiles/zsh/.zsh_aliases"
+alias zas="source ~/dotfiles/zsh/.zsh_aliases"
+
+# git alias
+alias ga="git add"
+alias ga.="git add ."
+alias gc="git commit -m"
+alias gpd="git push origin development"
+alias gpm="git push origin main"
+alias gp="git push origin"
+alias gss="git status -s"
+alias gs="git status"
+alias gf="git fetch origin"
+alias gfd="git fetch origin dev"
+alias gfm="git fetch origin main"
+alias gmd="git merge origin/dev"
+alias gmm="git merge origin/main"
+
+# dev alias
+alias ns="npm start"
+alias nrd="npm run dev"
+alias c="code ."
+alias o="open ."
+
