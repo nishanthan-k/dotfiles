@@ -15,6 +15,10 @@ bindsym Mod4+mod1+Up exec pamixer --increase 5
 bindsym Mod4+mod1+Down exec pamixer --decrease 5
 bindsym Mod4+mod1+m exec pamixer --toggle-mute
 
+bindsym Mod4+F3 exec pamixer --increase 5
+bindsym Mod4+F2 exec pamixer --decrease 5
+bindsym Mod4+F1 exec pamixer --toggle-mute
+
 # brightness controls
 bindsym Mod4+F6 exec brightnessctl s +10%
 bindsym Mod4+F5 exec brightnessctl s 10%-
