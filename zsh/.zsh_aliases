@@ -5,6 +5,9 @@ alias zs="source ~/dotfiles/zsh/.zshrc"
 alias zac="nvim ~/dotfiles/zsh/.zsh_aliases"
 alias zas="source ~/dotfiles/zsh/.zsh_aliases"
 
+# files
+alias mkcd='function _mkcd(){ mkdir -p "$1" && cd "$1"; }; _mkcd'
+
 # git alias
 alias ga="git add"
 alias ga.="git add ."

@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/opt/docker-desktop/bin
 export DOCKER_HOST=unix:///var/run/docker.sock
 export PATH=$PATH:/home/nishanthan/.npm-global/bin
+export PATH=~/.npm-global/bin:$PATH
 
 ZSH_THEME="robbyrussell"
 
